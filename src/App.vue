@@ -6,9 +6,10 @@
         <v-btn prepend-icon="mdi-home" to="/">首頁</v-btn>
         <v-btn prepend-icon="mdi-list-status" to="/list">事項</v-btn>
         <v-btn prepend-icon="mdi-cog" to="/settings">設定</v-btn>
+        <v-btn @click="toggleTheme" prepend-icon="mdi-toggle-switch">切換</v-btn>
       </v-container>
     </v-app-bar>
-    <v-main>
+    <v-main class="custom-background">
       <!-- Component = 目前該顯示的路由元件 -->
       <router-view v-slot="{ Component }">
         <!--
@@ -28,8 +29,20 @@
 </template>
 
 <script setup>
-</script>
+// 黑白主題切換
+import { useTheme } from 'vuetify'
 
+const theme = useTheme()
 
-<script setup>
+function toggleTheme () {
+  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+}
 </script>
+<style>
+.custom-background{
+  background-image: url(./assets/potomo.png);
+  background-position: center;
+  background-size: cover;
+}
+
+</style>

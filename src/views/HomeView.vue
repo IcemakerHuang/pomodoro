@@ -15,8 +15,12 @@
           variant="text" icon="mdi-pause" :disabled="status !== STATUS.COUNTING"
           @click="pauseTimer"
         ></v-btn>
-        <v-btn variant="text" icon="mdi-skip-next" :disabled="currentItem.length === 0" @click = "finishTimer"></v-btn>
+        <v-btn
+          variant="text" icon="mdi-skip-next" :disabled="currentItem.length === 0"
+          @click="finishTimer"
+        ></v-btn>
       </v-col>
+
     </v-row>
   </v-container>
 </template>
@@ -35,11 +39,9 @@ const { setCurrentItem, countdown, setFinishedItem } = list
 const settings = useSettingsStore()
 const { selectedAlarmFile, notify } = storeToRefs(settings)
 
-// 程式碼一多，閱讀性會低 ->建議物件化
 // 0 = 停止
 // 1 = 倒數中
 // 2 = 暫停
-// 表達狀態風格蠻多用大寫
 const STATUS = {
   STOP: 0,
   COUNTING: 1,
@@ -87,6 +89,7 @@ const finishTimer = () => {
       show()
     }
   }
+
   setFinishedItem()
 
   if (items.value.length > 0) {

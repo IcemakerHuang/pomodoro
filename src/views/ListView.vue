@@ -1,10 +1,8 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12">
+      <v-col cols="6" align-self="center">
         <h1 class="text-center">事項</h1>
-      </v-col>
-      <v-col cols="12">
         <v-text-field
           variant="solo-filled"
           label="新增事項"
@@ -37,9 +35,21 @@
               </td>
               <td>
                 <template v-if="!item.edit">
-                  <!-- <v-btn icon="mdi-pencil" variant="text" color="green" @click="item.edit = true"></v-btn> -->
-                  <v-btn icon="mdi-pencil" variant="text" color="green" @click="editItem(item.id)"></v-btn>
-                  <v-btn icon="mdi-delete" variant="text" color="red" @click="delItem(item.id)"></v-btn>
+                  <!--
+                    <v-btn icon="mdi-pencil" variant="text" color="green" @click="item.edit = true"></v-btn>
+                  -->
+                  <v-btn
+                    icon="mdi-pencil"
+                    variant="text"
+                    color="green"
+                    @click="editItem(item.id)"
+                  ></v-btn>
+                  <v-btn
+                    icon="mdi-delete"
+                    variant="text"
+                    color="red"
+                    @click="delItem(item.id)"
+                  ></v-btn>
                 </template>
                 <template v-else>
                   <v-btn
@@ -62,11 +72,9 @@
             </tr>
           </tbody>
         </v-table>
-      </v-col>
-      <v-col cols="12">
+        <!-- 分隔線 -->
+        <v-divider></v-divider>
         <h1 class="text-center">已完成事項</h1>
-      </v-col>
-      <v-col col="12">
         <v-table>
           <thead>
             <tr>
@@ -91,6 +99,10 @@
             </tr>
           </tbody>
         </v-table>
+      </v-col>
+      <!-- 日曆元件 -->
+      <v-col cols="6" justify="space-around">
+        <v-date-picker color="primary"></v-date-picker>
       </v-col>
     </v-row>
   </v-container>
@@ -124,17 +136,11 @@ const onEditInputSubmit = async (id, i) => {
 }
 
 const rules = {
-  // required: value => !!value || '欄位必填'
   required: (value) => {
-    return Boolean(value) || '欄位必填'// 短路求值
+    return Boolean(value) || '欄位必填'
   },
   length: (value) => {
-    return value.length >= 3 || '必須三個字以上'// 短路求值
+    return value.length >= 3 || '必須三個字以上'
   }
-
-  // '123' = string
-  // !'123' = false
-  // !!'123' = true
-
 }
 </script>

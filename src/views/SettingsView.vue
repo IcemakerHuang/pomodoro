@@ -1,19 +1,17 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12">
+  <v-container class="justify-center align-center h-100 d-flex">
+    <v-row class="justify-center align-start h-100 d-flex">
+      <v-col cols="6">
         <h1 class="text-center">通知設定</h1>
-      </v-col>
-      <v-col cols="12">
         <v-radio-group inline v-model="notify">
           <v-radio label="開啟" :value="true"></v-radio>
           <v-radio label="關閉" :value="false"></v-radio>
         </v-radio-group>
       </v-col>
-      <v-col cols="12">
+      <!-- 垂直分隔線 -->
+      <v-divider vertical></v-divider>
+      <v-col cols="6">
         <h1 class="text-center">鈴聲設定</h1>
-      </v-col>
-      <v-col cols="12">
         <v-table>
           <thead>
             <tr>
